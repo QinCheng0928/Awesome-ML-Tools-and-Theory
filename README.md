@@ -1,10 +1,10 @@
-# [Learning-Roadmap](#Learning-Roadmap)
+# [Awesome-ML-Tools-and-Theory](#Awesome-ML-Tools-and-Theory)
 
 This repository is a knowledge base for learning Machine Learning and related tools. It contains theoretical books, practical code examples, and useful utilities, suitable for both study and research in Reinforcement Learning and Deep Learning.
 
 ## Directory Structure Overview
 
-- [Learning-Roadmap/](#Learning-Roadmap)
+- [Awesome-ML-Tools-and-Theory/](#Awesome-ML-Tools-and-Theory)
   - [README.md](./README.md)
   - [Reinforcement Learning](./Reinforcement-Learning/)
     - [BOOK: Mathematical Foundations of Reinforcement Learning](./Reinforcement-Learning/Mathematical_Foundations_of_Reinforcement_Learning.pdf)
