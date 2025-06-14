@@ -11,5 +11,7 @@
   - [Tools/](./Tools/)
     - [README.md](./Tools/README.md) 
     - [Pytorch](./Tools/Pytorch/)
-      - 
+      - [model_manual](./Tools/Pytorch/model_manual.py)
+      - [model_with_autograd](./Tools/Pytorch/model_with_autograd.py)
+      - [model_with_nn_module](./Tools/Pytorch/model_with_nn_module.py)
 
