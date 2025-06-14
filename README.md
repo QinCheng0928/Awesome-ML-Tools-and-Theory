@@ -10,6 +10,6 @@
     - [Mathematical Foundations of Reinforcement Learning](./Reinforcement-Learning/Mathematical_Foundations_of_Reinforcement_Learning.pdf)
   - [Tools/](./Tools/)
     - [README.md](./Tools/README.md) 
-    - [pytorch](./Tools/pytorch/)
+    - [Pytorch](./Tools/Pytorch/)
       - 
 
