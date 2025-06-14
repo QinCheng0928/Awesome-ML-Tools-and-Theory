@@ -1,0 +1,14 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Conda environment folders
+env/
+venv/
+.venv/
+
+# VSCode configuration folder
+.vscode/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/

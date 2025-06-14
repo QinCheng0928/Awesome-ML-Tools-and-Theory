@@ -7,15 +7,17 @@ This repository is a knowledge base for learning Machine Learning and related to
 - [Awesome-ML-Tools-and-Theory/](#Awesome-ML-Tools-and-Theory)
   - [README.md](./README.md)
   - [Reinforcement Learning](./Reinforcement-Learning/)
-    - [BOOK: Mathematical Foundations of Reinforcement Learning](./Reinforcement-Learning/Mathematical_Foundations_of_Reinforcement_Learning.pdf)
+    - [[Book] Mathematical Foundations of Reinforcement Learning](./Reinforcement-Learning/Mathematical_Foundations_of_Reinforcement_Learning.pdf)
+    - [[Code] Math of RL Book Code](./Reinforcement-Learning/Math-RL-Book-Code)
+      - [README.md](./Reinforcement-Learning/Math-RL-Book-Code/README.md) 
   - [Transformer](./Transformer)
-    - [PAPER: Mathematical Foundations of Reinforcement Learning](./Transformer/Attention_Is_All_You_Need.pdf)
+    - [[Paper] Mathematical Foundations of Reinforcement Learning](./Transformer/Attention_Is_All_You_Need.pdf)
   - [Tools/](./Tools/)
     - [README.md](./Tools/README.md) 
     - [Pytorch](./Tools/Pytorch/)
-      - [model_manual](./Tools/Pytorch/model_manual.py)
-      - [model_with_autograd](./Tools/Pytorch/model_with_autograd.py)
-      - [model_with_nn_module](./Tools/Pytorch/model_with_nn_module.py)
+      - [[Code] model_manual](./Tools/Pytorch/model_manual.py)
+      - [[Code] model_with_autograd](./Tools/Pytorch/model_with_autograd.py)
+      - [[Code] model_with_nn_module](./Tools/Pytorch/model_with_nn_module.py)
 
 
 
