@@ -8,6 +8,8 @@ This repository is a knowledge base for learning Machine Learning and related to
   - [README.md](./README.md)
   - [Reinforcement Learning](./Reinforcement-Learning/)
     - [BOOK: Mathematical Foundations of Reinforcement Learning](./Reinforcement-Learning/Mathematical_Foundations_of_Reinforcement_Learning.pdf)
+  - [Transformer](./Transformer)
+    - [PAPER: Mathematical Foundations of Reinforcement Learning](./Transformer/Attention_Is_All_You_Need.pdf)
   - [Tools/](./Tools/)
     - [README.md](./Tools/README.md) 
     - [Pytorch](./Tools/Pytorch/)
