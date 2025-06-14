@@ -1,8 +1,8 @@
 # [Learning-Roadmap](#Learning-Roadmap)
 
+This repository is a knowledge base for learning Machine Learning and related tools. It contains theoretical books, practical code examples, and useful utilities, suitable for both study and research in Reinforcement Learning and Deep Learning.
 
-
-## Directory Structure
+## Directory Structure Overview
 
 - [Learning-Roadmap/](#Learning-Roadmap)
   - [README.md](./README.md)
@@ -15,3 +15,20 @@
       - [model_with_autograd](./Tools/Pytorch/model_with_autograd.py)
       - [model_with_nn_module](./Tools/Pytorch/model_with_nn_module.py)
 
+
+
+
+
+## Contribution Guide
+
+Contributions are welcome in any form, including:
+
+- Adding more reinforcement learning materials
+- Improving and optimizing example code
+- Sharing learning experiences and practical tips
+
+Please contact me via Pull Requests or Issues.
+
+## Contact
+
+GitHub: [https://github.com/QinCheng0928](https://github.com/QinCheng0928)
