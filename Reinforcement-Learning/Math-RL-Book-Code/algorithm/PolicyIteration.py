@@ -8,7 +8,7 @@ import torch
 print("cuda is avaliable", torch.cuda.is_available())
 
 
-class ValueIteration(BaseModel):
+class PolicyIteration(BaseModel):
     def __init__(self, 
                  env,
                  thousands=1e-5,
@@ -38,35 +38,51 @@ class ValueIteration(BaseModel):
         return self.action_space[action_index]
     
     def train(self):
-        t = 1
+        iteration = 0
         while True:
-            last_v = self.v.copy()
-            for state_idx in range(self.num_states):
-                x, y = self.index_to_state(state_idx)
-                for action_idx, action in enumerate(self.action_space):
-                    next_state, reward = self.env.get_next_state_and_reward((x, y), action)
-                    next_state_idx = self.state_to_index(next_state)
-                    # calculate the action value
-                    # q = r + gamma * v(s')
-                    self.q[state_idx, action_idx] = reward + self.gamma * last_v[next_state_idx]
-               
-                # value update
-                self.v[state_idx] = np.max(self.q[state_idx])
-                
-            # policy update
-            self.policy[:] = 0.0
-            best_actions = np.argmax(self.q, axis=1)
-            for s in range(self.num_states):
-                self.policy[s, best_actions[s]] = 1.0
-            
-            # check convergence
-            delta = np.max(np.abs(self.v - last_v))
-            print(f"Iteration {t} completed. Max change in value function: {delta}")
-            t += 1
-            
-            if delta < self.thousands:
+            iteration += 1
+            print(f"Iteration {iteration}: Policy Evaluation...")
+
+            # Policy Evaluation
+            while True:
+                delta = 0
+                last_v = self.v.copy()
+                for state_index in range(self.num_states):
+                    v_new = 0
+                    for action_index, action in enumerate(self.action_space):
+                        next_state, reward = self.env.get_next_state_and_reward(self.index_to_state(state_index), action)
+                        next_state_index = self.state_to_index(next_state)
+                        v_new += self.policy[state_index][action_index] * (reward + self.gamma * last_v[next_state_index])
+                    delta = max(delta, abs(v_new - self.v[state_index]))                
+                    self.v[state_index] = v_new
+
+                if delta < self.thousands:
+                    break
+
+            # Policy Improvement
+            policy_stable = True
+            for state_index in range(self.num_states):
+                old_action = np.argmax(self.policy[state_index])
+                for action_index, action in enumerate(self.action_space):
+                    next_state, reward = self.env.get_next_state_and_reward(self.index_to_state(state_index), action)
+                    next_state_index = self.state_to_index(next_state)
+                    self.q[state_index][action_index] = reward + self.gamma * self.v[next_state_index]
+                best_action = np.argmax(self.q[state_index])
+                if best_action != old_action:
+                    policy_stable = False
+
+                self.policy[state_index] = np.zeros(len(self.action_space))
+                self.policy[state_index][best_action] = 1.0
+
+            # Check if the policy is stable
+            # This is different from judging whether v converges in the book. Here, it is to judge whether the strategy converges.
+            if policy_stable:
+                print(f"Policy converged after {iteration} iterations.")
                 break
-        print("Value Iteration training completed.")
+
+        print("Policy Iteration completed.")
+
+
      
     # load the policy, action values and state values from a file
     def load(self, path):

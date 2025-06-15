@@ -55,7 +55,7 @@ class GridWorld():
     def step(self, action):
         assert action in self.action_space, "Invalid action"
 
-        next_state, reward  = self._get_next_state_and_reward(self.agent_state, action)
+        next_state, reward  = self.get_next_state_and_reward(self.agent_state, action)
         done = self._is_done(next_state)
 
         # Add some noise for visualization
@@ -68,10 +68,10 @@ class GridWorld():
         
         self.agent_state = next_state
         return self.agent_state, reward, done, {}   
-    
+        
     # p(r|s,a) and p(s'|s,a) 
     # It is a constant value (1 or 0) under the given conditions of s and a.
-    def _get_next_state_and_reward(self, state, action):
+    def get_next_state_and_reward(self, state, action):
         x, y = state
         new_state = tuple(np.array(state) + np.array(action))
         # out of bounds
