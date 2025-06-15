@@ -81,8 +81,6 @@ class MCGreedy(BaseModel):
                 num_actions = len(self.action_space)
                 self.policy[state_index_t, :] = self.epsilon / num_actions
                 self.policy[state_index_t, best_action_index] = 1 - self.epsilon + self.epsilon / num_actions
-            print("s  a: ",self.num)
-            print("Iteration: ", iterations + 1, " Policy: ", self.policy)
         
         self.v = np.sum(self.policy * self.q, axis=1)       
         print("MC Greedy completed.")
