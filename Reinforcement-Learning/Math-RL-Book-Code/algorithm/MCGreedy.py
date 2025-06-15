@@ -52,11 +52,7 @@ class MCGreedy(BaseModel):
 
             episode = []
             current_state = self.start_state
-            done = False
-            for _ in range(self.collect_data_steps):
-                if done:
-                    current_state = self.start_state
-                    done = False                
+            for _ in range(self.collect_data_steps):       
                 state_idx = self.state_to_index(current_state)
                 action_prob = self.policy[state_idx]
                 selected_action_idx = np.random.choice(len(action_prob), p=action_prob)
@@ -65,10 +61,11 @@ class MCGreedy(BaseModel):
                 next_state, reward = self.env.get_next_state_and_reward(current_state, selected_action)
                 episode.append((current_state, selected_action, reward))
                 current_state = next_state
-                if current_state == self.target_state:
-                    done = True
-
+            
+                
             G = 0
+            self.returns = np.zeros((self.num_states, len(self.action_space)))
+            self.num = np.zeros((self.num_states, len(self.action_space)))   
             for t in range(len(episode) - 1, -1, -1):
                 state_t, action_t, reward_t = episode[t]
                 G = reward_t + self.gamma * G
@@ -84,6 +81,8 @@ class MCGreedy(BaseModel):
                 num_actions = len(self.action_space)
                 self.policy[state_index_t, :] = self.epsilon / num_actions
                 self.policy[state_index_t, best_action_index] = 1 - self.epsilon + self.epsilon / num_actions
+            print("s  a: ",self.num)
+            print("Iteration: ", iterations + 1, " Policy: ", self.policy)
         
         self.v = np.sum(self.policy * self.q, axis=1)       
         print("MC Greedy completed.")

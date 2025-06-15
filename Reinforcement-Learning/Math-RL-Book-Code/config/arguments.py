@@ -11,13 +11,13 @@ parser = argparse.ArgumentParser("Grid World Environment")
 ## ==================== User settings ====================
 # specify the number of columns and rows of the grid world
 # The first element represents the column index (horizontal coordinate), and the second element represents the row index (vertical coordinate).
-parser.add_argument("--env-size", type=Union[list, tuple, np.ndarray], default=(5,5) )   
+parser.add_argument("--env-size", type=Union[list, tuple, np.ndarray], default=(5, 5))   
 
 # specify the start state
-parser.add_argument("--start-state", type=Union[list, tuple, np.ndarray], default=(0,4))
+parser.add_argument("--start-state", type=Union[list, tuple, np.ndarray], default=(0, 4))
 
 # specify the target state
-parser.add_argument("--target-state", type=Union[list, tuple, np.ndarray], default=(4,4))
+parser.add_argument("--target-state", type=Union[list, tuple, np.ndarray], default=(4, 4))
 
 # sepcify the forbidden states
 parser.add_argument("--forbidden-states", type=list, default=[ (1, 4), (1, 3), (1, 2), (1, 1), (2, 1), (3, 3), (4, 3)] )

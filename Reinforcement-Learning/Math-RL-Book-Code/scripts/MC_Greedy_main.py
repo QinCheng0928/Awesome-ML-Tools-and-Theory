@@ -13,8 +13,8 @@ def train(model_path):
     model = MCGreedy(
         env,
         gamma=0.9,
-        iterations=1,
-        collect_data_steps=1e7,
+        iterations=5,
+        collect_data_steps=1e6,
         epsilon=0.1,
         model_path=model_path,
         )
@@ -43,7 +43,7 @@ def evaluate(model_path):
 
 def main():
     is_train = False
-    model_path = os.path.join(root_dir, 'log/MC_greedy/MC_greedy_model_v0.pth')
+    model_path = os.path.join(root_dir, 'log/MC_greedy/MC_greedy_model_v1.pth')
     if is_train:
         print("Training the MC Greedy model...")
         train(model_path)
