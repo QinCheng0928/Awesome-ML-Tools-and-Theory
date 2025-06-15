@@ -3,8 +3,8 @@ from config.arguments import args
 class BaseModel:
     def __init__(self, 
                  env,
-                 thousands,
-                 gamma,
+                 thousands=1e-5,
+                 gamma=0.9,
                  model_path = None,
                  env_size=args.env_size, 
                  start_state=args.start_state, 
