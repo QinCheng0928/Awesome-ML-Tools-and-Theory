@@ -8,20 +8,31 @@ This repository contains code examples and implementations related to the book *
 ```
 Math-RL-Book-Code/
 │
+├── algorithm/
+│   ├── model.py                         # The base class for models
+│   ├── ValueIteration.py                # Value Iteration Algorithm Model
+│   └── .../                             # More models will be added, with similar structures
+│
 ├── config/
-│   └── arguments.py                 # Configuration parameter script
+│   └── arguments.py                     # Configuration parameter script
 │
 ├── grid_world_env/
-│   └── grid_world.py                # Grid World environment implementation
+│   └── grid_world.py                    # Grid World environment implementation
+│
+├── log/
+│   ├── value_iteration/                 # Save the trained model
+│   │   └── value_iteration_model_v0.pth # Corresponding model data
+│   └── .../                         
 │
 ├── scripts/
-│   └── ...                          # RL algorithm scripts to be added later
+│   ├── value_iteration_main.py          # Implementing the value iteration algorithm
+│   └── .../                             # More algorithms will be added, with similar structures
 │
 ├── test/
-│   └── example_grid_world.py        # Example code demonstrating simulation
+│   └── example_grid_world.py            # Example code demonstrating simulation
 │
-├── requirements.txt                 # Python dependency list
-└── README.md                        # Project documentation
+├── requirements.txt                     # Python dependency list
+└── README.md                            # Project documentation
 ```
 ---
 

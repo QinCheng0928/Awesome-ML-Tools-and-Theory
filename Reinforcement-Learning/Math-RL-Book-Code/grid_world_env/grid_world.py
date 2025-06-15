@@ -38,31 +38,39 @@ class GridWorld():
         self.color_agent = (0,0,1)
 
 
+
     # Reset the environment to the initial state
     def reset(self):
+        # clear the canvas if it exists
+        if self.canvas is not None:
+            plt.close(self.canvas)
+            self.canvas = None
+            self.ax = None
+            self.traj = []
         self.agent_state = self.start_state
         self.traj = [self.agent_state] 
         return self.agent_state, {}
 
-
+    
     def step(self, action):
         assert action in self.action_space, "Invalid action"
 
         next_state, reward  = self._get_next_state_and_reward(self.agent_state, action)
         done = self._is_done(next_state)
 
+        # Add some noise for visualization
         x_store = next_state[0] + 0.03 * np.random.randn()
         y_store = next_state[1] + 0.03 * np.random.randn()
         state_store = tuple(np.array((x_store,  y_store)) + 0.2 * np.array(action))
         state_store_2 = (next_state[0], next_state[1])
-
-        self.agent_state = next_state
-
         self.traj.append(state_store)   
         self.traj.append(state_store_2)
+        
+        self.agent_state = next_state
         return self.agent_state, reward, done, {}   
     
-        
+    # p(r|s,a) and p(s'|s,a) 
+    # It is a constant value (1 or 0) under the given conditions of s and a.
     def _get_next_state_and_reward(self, state, action):
         x, y = state
         new_state = tuple(np.array(state) + np.array(action))
@@ -79,16 +87,13 @@ class GridWorld():
         elif x - 1 < 0 and action == (-1, 0):                   # left
             x = 0
             reward = self.reward_forbidden 
-        # reached target state
-        elif new_state == self.target_state:                    
+        elif new_state == self.target_state:                    # reached target state
             x, y = self.target_state
             reward = self.reward_target
-        # reached forbidden state but not entering
-        elif new_state in self.forbidden_states:                
+        elif new_state in self.forbidden_states:                # reached forbidden state but not entering 
             x, y = state
             reward = self.reward_forbidden       
-        # common case 
-        else:
+        else:                                                   # common case 
             x, y = new_state
             reward = self.reward_step
             
