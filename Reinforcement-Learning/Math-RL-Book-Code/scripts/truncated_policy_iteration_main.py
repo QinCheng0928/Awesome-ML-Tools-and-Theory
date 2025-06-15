@@ -5,7 +5,8 @@ sys.path.append(root_dir)
 print("Root directory: ", root_dir)
 import time
 from grid_world_env.grid_world import GridWorld
-from algorithm.TruncatedPolicyIteraton import TruncatedPolicyIteration
+from algorithm.TruncatedPolicyIteration import TruncatedPolicyIteration
+
 
 def train(model_path):
     env = GridWorld()
@@ -13,6 +14,7 @@ def train(model_path):
         env,
         thousands=1e-5,
         gamma=0.9,
+        truncated_steps=1000, 
         )
     model.train()
     model.save(model_path)
