@@ -22,6 +22,7 @@ class MCBasic(BaseModel):
         self.iterations = iterations
         self.collect_data_steps = round(collect_data_steps)
         self.model_path = model_path
+        self.v = np.zeros(self.num_states)                                 # state values
         self.q = np.zeros((self.num_states, len(self.action_space)))       # action values
         self.policy = np.zeros((self.num_states, len(self.action_space)))  # policy
     
@@ -68,30 +69,6 @@ class MCBasic(BaseModel):
                 self.policy[state_idx, :] = 0
                 self.policy[state_idx, best_action_index] = 1.0
 
-            # Set checkpoint every 10 iterations
-            if (iterations + 1) % 10 == 0:
-                self.save(self.model_path)
+        self.v = np.max(self.q, axis=1)
 
         print("MC Basic completed.")
-
-
-     
-    # load the policy, action values and state values from a file
-    def load(self, path):
-        self.model_path = path
-        assert os.path.exists(self.model_path), f"Model file '{self.model_path}' does not exist."
-        
-        data = torch.load(self.model_path)
-        assert 'policy' in data and 'q' in data, "Loaded data missing 'policy' or 'q' keys."
-        
-        self.policy = data['policy'].numpy()
-        self.q = data['q'].numpy()
-        print(f"Model loaded from {self.model_path}")
-        
-    # save the policy, action values and state values to a file    
-    def save(self, path):
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        policy_tensor = torch.tensor(self.policy, dtype=torch.float32)
-        q_tensor = torch.tensor(self.q, dtype=torch.float32)
-        torch.save({'policy': policy_tensor, 'q':q_tensor}, path)
-        print(f"Model saved to {path}")

@@ -35,13 +35,14 @@ def evaluate(model_path):
             
         # Add policy and state values to the environment    
         env.add_policy(model.policy)
+        env.add_state_values(model.v)
         
         # Render the environment
         env.render(animation_interval=2)
 
 def main():
     is_train = False
-    model_path = os.path.join(root_dir, 'log/MCExploringStarts/MCExploringStarts_model_v0.pth')
+    model_path = os.path.join(root_dir, 'log/MC_exploring_starts/MC_exploring_starts_model_v0.pth')
     if is_train:
         print("Training the MC Exploring Starts model...")
         train(model_path)

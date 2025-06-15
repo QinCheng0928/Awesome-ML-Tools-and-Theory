@@ -81,27 +81,3 @@ class PolicyIteration(BaseModel):
                 break
 
         print("Policy Iteration completed.")
-
-
-     
-    # load the policy, action values and state values from a file
-    def load(self, path):
-        self.model_path = path
-        assert os.path.exists(self.model_path), f"Model file '{self.model_path}' does not exist."
-        
-        data = torch.load(self.model_path)
-        assert 'policy' in data and 'v' in data and 'q' in data, "Loaded data missing 'policy' or 'v' or 'q' keys."
-        
-        self.policy = data['policy'].numpy()
-        self.v = data['v'].numpy()
-        self.q = data['q'].numpy()
-        print(f"Model loaded from {self.model_path}")
-        
-    # save the policy, action values and state values to a file    
-    def save(self, path):
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        policy_tensor = torch.tensor(self.policy, dtype=torch.float32)
-        v_tensor = torch.tensor(self.v, dtype=torch.float32)
-        q_tensor = torch.tensor(self.q, dtype=torch.float32)
-        torch.save({'policy': policy_tensor, 'v':v_tensor, 'q':q_tensor}, path)
-        print(f"Model saved to {path}")

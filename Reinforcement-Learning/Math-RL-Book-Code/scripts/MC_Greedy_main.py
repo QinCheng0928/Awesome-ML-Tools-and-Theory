@@ -5,16 +5,17 @@ sys.path.append(root_dir)
 print("Root directory: ", root_dir)
 import time
 from grid_world_env.grid_world import GridWorld
-from algorithm.MCBasic import MCBasic
+from algorithm.MCGreedy import MCGreedy
 
 
 def train(model_path):
     env = GridWorld()
-    model = MCBasic(
+    model = MCGreedy(
         env,
         gamma=0.9,
-        iterations=100,
-        collect_data_steps=100,
+        iterations=1,
+        collect_data_steps=1e7,
+        epsilon=0.1,
         model_path=model_path,
         )
     model.train()
@@ -22,7 +23,7 @@ def train(model_path):
 
 def evaluate(model_path):
     env = GridWorld()  
-    model = MCBasic(env)
+    model = MCGreedy(env)
     model.load(model_path)          
     for t in range(5):
         state, _ = env.reset()
@@ -42,12 +43,12 @@ def evaluate(model_path):
 
 def main():
     is_train = False
-    model_path = os.path.join(root_dir, 'log/MC_basic/MC_basic_model_v0.pth')
+    model_path = os.path.join(root_dir, 'log/MC_greedy/MC_greedy_model_v0.pth')
     if is_train:
-        print("Training the MC Basic model...")
+        print("Training the MC Greedy model...")
         train(model_path)
     else:
-        print("Evaluating the MC Basic model...")
+        print("Evaluating the MC Greedy model...")
         evaluate(model_path)
 
     
