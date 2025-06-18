@@ -8,14 +8,10 @@ from algorithm.model import BaseModel
 class QNetwork(nn.Module):
     def __init__(self, state_dim, action_dim):
         super(QNetwork, self).__init__()
-        self.net = nn.Sequential(
-            nn.Linear(state_dim, 32),
-            nn.ReLU(),
-            nn.Linear(32, action_dim)
-        )
+        self.linear = nn.Linear(state_dim, action_dim)
 
     def forward(self, x):
-        return self.net(x)
+        return self.linear(x)
 
 class SarsaNN(BaseModel):
     def __init__(self, 

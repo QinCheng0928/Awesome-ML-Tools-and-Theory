@@ -33,10 +33,6 @@ def evaluate(model_path):
             state, reward, done, info = env.step(action)
             print(f"Step: {t}, Action: {action}, State: {state}, Reward: {reward}, Done: {done}")
             env.render()
-            
-        # Add policy and state values to the environment    
-        env.add_policy(model.policy)
-        env.add_state_values(model.v)
         
         # Render the environment
         env.render(animation_interval=2)
