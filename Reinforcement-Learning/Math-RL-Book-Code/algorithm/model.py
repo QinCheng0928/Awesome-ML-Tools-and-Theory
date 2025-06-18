@@ -56,7 +56,7 @@ class BaseModel:
         self.model_path = path
         assert os.path.exists(self.model_path), f"Model file '{self.model_path}' does not exist."
         
-        data = torch.load(self.model_path)
+        data = torch.load(self.model_path, weights_only=True)
         assert 'policy' in data and 'v' in data and 'q' in data, "Loaded data missing 'policy' or 'q' keys."
         
         self.policy = data['policy'].numpy()
