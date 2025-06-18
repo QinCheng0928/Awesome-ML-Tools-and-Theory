@@ -13,9 +13,9 @@ def train(model_path):
     model = Sarsa(
         env,
         gamma=0.9,
-        iterations=5,
-        collect_data_steps=1e6,
+        iterations=100,
         epsilon=0.1,
+        alpha=0.1,
         model_path=model_path,
         )
     model.train()
@@ -24,7 +24,7 @@ def train(model_path):
 def evaluate(model_path):
     env = GridWorld()  
     model = Sarsa(env)
-    model.load(model_path)          
+    model.load(model_path)      
     for t in range(5):
         state, _ = env.reset()
         done = False
