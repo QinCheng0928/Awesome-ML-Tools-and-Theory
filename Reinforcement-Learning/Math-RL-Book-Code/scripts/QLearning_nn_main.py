@@ -38,7 +38,7 @@ def evaluate(model_path):
         env.render(animation_interval=2)
 
 def main():
-    is_train = True
+    is_train = False
     model_path = os.path.join(root_dir, 'log/QLearning_nn/QLearning_nn_model_v0.pth')
     if is_train:
         print("Training the Q-Learning model based on value function...")

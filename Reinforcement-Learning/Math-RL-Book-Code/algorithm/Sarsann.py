@@ -135,5 +135,6 @@ class SarsaNN(BaseModel):
         if path is None:
             path = self.model_path
         assert os.path.exists(path), f"Model file {path} not found."
-        self.q_net.load_state_dict(torch.load(path, map_location=self.device))
+        state_dict = torch.load(path, map_location=self.device, weights_only=True)
+        self.q_net.load_state_dict(state_dict)
         print(f"Model loaded from {path}")
