@@ -4,6 +4,7 @@ import os
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(root_dir)
 import torch
+import numpy as np
 
 
 class BaseModel:
@@ -32,6 +33,23 @@ class BaseModel:
         self.reward_target = args.reward_target
         self.reward_forbidden = args.reward_forbidden
         self.reward_step = args.reward_step
+
+    # (x, y) to state index
+    def state_to_index(self, state):
+        x, y = state
+        return y * self.env_size[0] + x
+    
+    # state index to (x, y)
+    def index_to_state(self, index):
+        x = index % self.env_size[0]
+        y = index // self.env_size[0]
+        return (x, y)
+    
+    # Get the current action based on current state and policy
+    def predict(self, state):
+        state_index = self.state_to_index(state)
+        action_index = np.argmax(self.policy[state_index])
+        return self.action_space[action_index]
         
     # load the policy, action values and state values from a file
     def load(self, path):

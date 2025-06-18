@@ -19,24 +19,7 @@ class PolicyIteration(BaseModel):
         self.v = np.zeros(self.num_states)                                 # state values
         self.q = np.zeros((self.num_states, len(self.action_space)))       # action values
         self.policy = np.zeros((self.num_states, len(self.action_space)))  # policy
-    
-    # (x, y) to state index
-    def state_to_index(self, state):
-        x, y = state
-        return y * self.env_size[0] + x
-    
-    # state index to (x, y)
-    def index_to_state(self, index):
-        x = index % self.env_size[0]
-        y = index // self.env_size[0]
-        return (x, y)
-    
-    # Get the current action based on current state and policy
-    def predict(self, state):
-        state_index = self.state_to_index(state)
-        action_index = np.argmax(self.policy[state_index])
-        return self.action_space[action_index]
-    
+       
     def train(self):
         iteration = 0
         while True:
