@@ -76,10 +76,11 @@ class DQN(BaseModel):
         if training and random.random() < self.epsilon:
             return random.choice(self.action_space)
         
-        state_tensor = torch.FloatTensor(state).unsqueeze(0).to(self.device)
+        state_idx = self.state_to_index(state)
+        state_tensor = torch.eye(self.num_states)[state_idx].to(self.device)
         with torch.no_grad():
             q_values = self.policy_net(state_tensor)
-        action_idx = torch.argmax(q_values, dim=1).item()
+        action_idx = torch.argmax(q_values).item()
         return self.action_space[action_idx]
 
     def store_transition(self, state, action, reward, next_state, done):
