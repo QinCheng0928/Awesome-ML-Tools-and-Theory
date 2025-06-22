@@ -1,0 +1,5 @@
+<!-- roslaunch hello_node hello.launch -->
+<launch>
+    <node pkg="hello_node" type="talker.py" name="talker_node" output="screen"/>
+    <node pkg="hello_node" type="listener.py" name="listener_node" output="screen"/>
+</launch>

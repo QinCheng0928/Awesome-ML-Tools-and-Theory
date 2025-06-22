@@ -27,6 +27,10 @@ WorkSpace
         └── config/          # Configuration files
 ```
 
+## ⚠️ Notes
+
+After building your workspace, run **`source devel/setup.bash`** to update your environment variables so ROS can find your newly built messages and packages.
+
 ## 📦 Implementation of HelloWorld Program
 
 ### 1. Create and initialize workspace
@@ -70,13 +74,17 @@ if __name__ == "__main__":
 
 ```
 chmod +x <HelloWorld.py>
+or
+chmod +x *.py
 ```
 
 ### 6. Edit the CamkeList.txt file under the ROS package
 
 ```
-catkin_install_python(PROGRAMS scripts/<HelloWorld.py>
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+catkin_install_python(
+	PROGRAMS 
+	scripts/<HelloWorld.py>
+  	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 ```
 
@@ -98,3 +106,66 @@ cd <workspace_name>
 source ./devel/setup.bash
 rosrun <ros_package_name> <HelloWorld.py>
 ```
+
+## 🌟 Custom ROS Message Setup
+
+This guide walks you through creating a custom ROS message (`Person.msg`) and configuring your package to build and use it.
+
+### 1. Define the Message File
+
+Create a directory named `msg` inside your package folder, and add a file named `Person.msg` with the following content:
+
+```plaintext
+string name
+uint16 age
+float64 height
+```
+
+### 2.Update package.xml
+
+Add dependencies for message generation and runtime:
+
+```
+<build_depend>message_generation</build_depend>
+<exec_depend>message_runtime</exec_depend>
+```
+
+### 3.Modify CMakeLists.txt
+
+Make sure you find the required packages including `message_generation`:
+
+```
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  rospy
+  std_msgs
+  message_generation
+)
+```
+
+Add your message file(s):
+
+```
+add_message_files(
+  FILES
+  Person.msg
+)
+```
+
+Specify dependencies for generating messages:
+
+```
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
+```
+
+Declare runtime dependencies in the `catkin_package()` call:
+
+```
+catkin_package(
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
+)
+```
+
