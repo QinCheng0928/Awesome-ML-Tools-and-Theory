@@ -6,13 +6,16 @@ print("Root directory: ", root_dir)
 from grid_world_env.grid_world import GridWorld
 from algorithm.REINFORCE import REINFORCE
 
+# =======================================================================
+# Training will only succeed when the parameter --reward-target=1000000
+# =======================================================================
 
 def train(model_path):
     env = GridWorld()
     model = REINFORCE(
         env,
-        gamma=0.99,               
-        iterations=100,          
+        gamma=0.9,               
+        iterations=1e4,          
         learning_rate=1e-3,      
         model_path=model_path,    
     )
@@ -27,22 +30,15 @@ def evaluate(model_path):
     for t in range(5):
         state, _ = env.reset()
         done = False
-        total_reward = 0
         while not done:
             action = model.predict(state, training=False)
-            next_state, reward = env.get_next_state_and_reward(state, action)
-            done = (next_state == env.target_state)
-            
+            state, reward, done, info = env.step(action)
             print(f"Step: {t}, Action: {action}, State: {state}, Reward: {reward}, Done: {done}")
             env.render()
-            state = next_state
-            total_reward += reward
-        
-        print(f"Episode {t+1}, Total Reward: {total_reward}")
         env.render(animation_interval=2)
 
 def main():
-    is_train = True
+    is_train = False
     model_path = os.path.join(root_dir, 'log/REINFORCEN/REINFORCEN_model_v0.pth')
     
     if is_train:

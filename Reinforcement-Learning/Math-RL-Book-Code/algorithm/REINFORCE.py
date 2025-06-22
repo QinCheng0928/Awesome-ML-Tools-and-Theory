@@ -8,13 +8,14 @@ from collections import deque
 from algorithm.model import BaseModel
 
 class REINFORCENetwork(nn.Module):
-    def __init__(self, state_dim, action_dim, hidden_dim=128):
+    def __init__(self, state_dim, action_dim, hidden_dim=32):
         super(REINFORCENetwork, self).__init__()
         self.net = nn.Sequential(
             nn.Linear(state_dim, hidden_dim),
             nn.ReLU(),
             nn.Linear(hidden_dim, action_dim),
-            nn.LogSoftmax(dim=-1)
+            # nn.Linear(state_dim, action_dim),
+            nn.Softmax(dim=-1)
         )
         
     def forward(self, x):
@@ -30,7 +31,7 @@ class REINFORCE(BaseModel):
         super().__init__(env, gamma)
         
         # Hyperparameters
-        self.iterations = iterations
+        self.iterations = round(iterations)
         self.learning_rate = learning_rate
         self.model_path = model_path
         
@@ -42,12 +43,6 @@ class REINFORCE(BaseModel):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.policy_net = REINFORCENetwork(self.state_dim, self.action_dim).to(self.device)
         self.optimizer = optim.Adam(self.policy_net.parameters(), lr=self.learning_rate)
-        
-        # Logging setup
-        os.makedirs(os.path.dirname(self.model_path), exist_ok=True)
-        self.log_path = os.path.join(os.path.dirname(self.model_path), "training_log.txt")
-        with open(self.log_path, "w") as f:
-            f.write("REINFORCE Training Log\n")
 
     def predict(self, state, training=False):
         state_idx = self.state_to_index(state)
@@ -66,27 +61,27 @@ class REINFORCE(BaseModel):
 
     def train(self):
         print("REINFORCE Training...")
-        best_reward = -float('inf')
         
-        for episode in range(self.iterations):
+        for i in range(self.iterations):
             state = self.start_state
             episode_states = []
             episode_actions = []
             episode_rewards = []
             
-            # get an episode
             while state != self.target_state:
                 action = self.predict(state, training=True)
                 next_state, reward = self.env.get_next_state_and_reward(state, action)
                 
-                # save (state, action, reward)
                 episode_states.append(state)
                 episode_actions.append(action)
                 episode_rewards.append(reward)
                 
                 state = next_state
             
-            # calculate q(s,a) of every pair (s,a) in the episode
+            idx = torch.eye(self.num_states)[self.state_to_index(self.start_state)].unsqueeze(0).to(self.device)
+            probs = self.policy_net(idx).squeeze()
+            print(f"iterations { i } : {probs}")
+            
             returns = []
             R = 0
             for r in reversed(episode_rewards):
@@ -94,34 +89,18 @@ class REINFORCE(BaseModel):
                 returns.insert(0, R)
             returns = torch.tensor(returns, dtype=torch.float32, device=self.device)
             
-            # Compute policy gradient
-            policy_losses = []
-            for s, a, R in zip(episode_states, episode_actions, returns):
-                state_idx = self.state_to_index(s)
-                state_tensor = torch.eye(self.num_states)[state_idx].unsqueeze(0).to(self.device)
-                log_probs = self.policy_net(state_tensor)
-                action_idx = self.action_space.index(a)
-                policy_loss = -log_probs[0, action_idx] * R
-                policy_losses.append(policy_loss)
-
+            state_indices = [self.state_to_index(s) for s in episode_states]
+            states_tensor = torch.eye(self.num_states)[state_indices].to(self.device)
+            action_indices = torch.tensor([self.action_space.index(a) for a in episode_actions], 
+                                        dtype=torch.long, device=self.device)
+            
+            probs = self.policy_net(states_tensor)[range(len(action_indices)), action_indices]
+            log_probs = torch.log(probs)
+            policy_loss = -(log_probs * returns).sum()
+            
             self.optimizer.zero_grad()
-            loss = torch.stack(policy_losses).sum()
-            loss.backward()
+            policy_loss.backward()
             self.optimizer.step()
-            
-            total_reward = sum(episode_rewards)
-            with open(self.log_path, "a") as f:
-                f.write(f"Episode {episode+1}, Reward: {total_reward:.2f}, Loss: {loss.item():.4f}\n")
-            
-            # Save latest model
-            print(f"episode {episode + 1}")
-            latest_path = self.model_path.replace(".pth", "_latest.pth")
-            self.save(latest_path)
-            
-            if total_reward > best_reward:
-                best_reward = total_reward
-                self.save(self.model_path)
-                print(f"[Best] Episode {episode+1}, Reward: {total_reward:.2f}")
 
         print("Training completed.")
 
