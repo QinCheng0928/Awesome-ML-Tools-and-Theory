@@ -7,7 +7,9 @@ from grid_world_env.grid_world import GridWorld
 from algorithm.REINFORCE import REINFORCE
 
 # =======================================================================
-# Training will only succeed when the parameter --reward-target=1000000
+# Training will only succeed when the parameter 
+#       --reward-target=100
+#       gamma=0.9
 # =======================================================================
 
 def train(model_path):
@@ -39,7 +41,7 @@ def evaluate(model_path):
 
 def main():
     is_train = False
-    model_path = os.path.join(root_dir, 'log/REINFORCEN/REINFORCEN_model_v0.pth')
+    model_path = os.path.join(root_dir, 'log/REINFORCE/REINFORCE_model_v0.pth')
     
     if is_train:
         print("Training the REINFORCE model...")

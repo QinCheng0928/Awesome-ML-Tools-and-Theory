@@ -14,7 +14,6 @@ class REINFORCENetwork(nn.Module):
             nn.Linear(state_dim, hidden_dim),
             nn.ReLU(),
             nn.Linear(hidden_dim, action_dim),
-            # nn.Linear(state_dim, action_dim),
             nn.Softmax(dim=-1)
         )
         
@@ -49,8 +48,7 @@ class REINFORCE(BaseModel):
         state_tensor = torch.eye(self.num_states)[state_idx].unsqueeze(0).to(self.device)
         
         with torch.no_grad():
-            log_probs = self.policy_net(state_tensor)
-            probs = torch.exp(log_probs).squeeze(0) 
+            probs = self.policy_net(state_tensor)
             
         if training:
             action_idx = torch.multinomial(probs, 1).item()
@@ -63,6 +61,9 @@ class REINFORCE(BaseModel):
         print("REINFORCE Training...")
         
         for i in range(self.iterations):
+            print(f"iterations { i } training...")
+
+            
             state = self.start_state
             episode_states = []
             episode_actions = []
@@ -76,11 +77,7 @@ class REINFORCE(BaseModel):
                 episode_actions.append(action)
                 episode_rewards.append(reward)
                 
-                state = next_state
-            
-            idx = torch.eye(self.num_states)[self.state_to_index(self.start_state)].unsqueeze(0).to(self.device)
-            probs = self.policy_net(idx).squeeze()
-            print(f"iterations { i } : {probs}")
+                state = next_state         
             
             returns = []
             R = 0
