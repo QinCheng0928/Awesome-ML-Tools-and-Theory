@@ -6,7 +6,7 @@ This repository is a knowledge base for learning Machine Learning and related to
 
 - [Awesome-ML-Tools-and-Theory](#Awesome-ML-Tools-and-Theory)
   - [Mathematical-Foundations](./Mathematical-Foundations/)
-    - [Information-Theory.md](./Mathematical-Foundations/Information-Theory.pdf)
+    - [Information-Theory](./Mathematical-Foundations/Information-Theory.pdf)
   - [Reinforcement Learning](./Reinforcement-Learning/)
     - [[Book] Mathematical Foundations of Reinforcement Learning](./Reinforcement-Learning/Mathematical_Foundations_of_Reinforcement_Learning.pdf)
     - [[Code] Math of RL Book Code](./Reinforcement-Learning/Math-RL-Book-Code)
