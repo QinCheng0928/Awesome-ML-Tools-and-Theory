@@ -5,22 +5,24 @@ This repository is a knowledge base for learning Machine Learning and related to
 ## 🗂️ Directory Structure Overview
 
 - [Awesome-ML-Tools-and-Theory/](#Awesome-ML-Tools-and-Theory)
-  - [README.md](./README.md)
+  - [Mathematical-Foundations](./Mathematical-Foundations/)
+    - [Information-Theory.md](./Mathematical-Foundations/Information-Theory.md)
   - [Reinforcement Learning](./Reinforcement-Learning/)
     - [[Book] Mathematical Foundations of Reinforcement Learning](./Reinforcement-Learning/Mathematical_Foundations_of_Reinforcement_Learning.pdf)
     - [[Code] Math of RL Book Code](./Reinforcement-Learning/Math-RL-Book-Code)
       - [README.md](./Reinforcement-Learning/Math-RL-Book-Code/README.md) 
-  - [Transformer](./Transformer)
-    - [[Paper] Mathematical Foundations of Reinforcement Learning](./Transformer/Attention_Is_All_You_Need.pdf)
+  - [ROS](./ROS/)
+    - [README.md](./ROS/README.md)
+    - [[Code] Simple ROS Demo](./ROS/Simple-ROS-Demo/)
   - [Tools/](./Tools/)
     - [README.md](./Tools/README.md) 
     - [Pytorch](./Tools/Pytorch/)
       - [[Code] model_manual](./Tools/Pytorch/model_manual.py)
       - [[Code] model_with_autograd](./Tools/Pytorch/model_with_autograd.py)
       - [[Code] model_with_nn_module](./Tools/Pytorch/model_with_nn_module.py)
-  - [ROS](./ROS/)
-    - [README.md](./ROS/README.md)
-    - [[Code] Simple ROS Demo](./ROS/Simple-ROS-Demo/)
+  - [Transformer](./Transformer)
+    - [[Paper] Mathematical Foundations of Reinforcement Learning](./Transformer/Attention_Is_All_You_Need.pdf)
+  - [README.md](./README.md)
 
 
 
