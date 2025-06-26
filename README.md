@@ -4,9 +4,9 @@ This repository is a knowledge base for learning Machine Learning and related to
 
 ## 🗂️ Directory Structure Overview
 
-- [Awesome-ML-Tools-and-Theory/](#Awesome-ML-Tools-and-Theory)
+- [Awesome-ML-Tools-and-Theory](#Awesome-ML-Tools-and-Theory)
   - [Mathematical-Foundations](./Mathematical-Foundations/)
-    - [Information-Theory.md](./Mathematical-Foundations/Information-Theory.md)
+    - [Information-Theory.md](./Mathematical-Foundations/Information-Theory.pdf)
   - [Reinforcement Learning](./Reinforcement-Learning/)
     - [[Book] Mathematical Foundations of Reinforcement Learning](./Reinforcement-Learning/Mathematical_Foundations_of_Reinforcement_Learning.pdf)
     - [[Code] Math of RL Book Code](./Reinforcement-Learning/Math-RL-Book-Code)
@@ -14,7 +14,7 @@ This repository is a knowledge base for learning Machine Learning and related to
   - [ROS](./ROS/)
     - [README.md](./ROS/README.md)
     - [[Code] Simple ROS Demo](./ROS/Simple-ROS-Demo/)
-  - [Tools/](./Tools/)
+  - [Tools](./Tools/)
     - [README.md](./Tools/README.md) 
     - [Pytorch](./Tools/Pytorch/)
       - [[Code] model_manual](./Tools/Pytorch/model_manual.py)
