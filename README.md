@@ -19,7 +19,7 @@ This repository is a knowledge base for learning Machine Learning and related to
     - [README.md](./Tools/README.md) 
     - [Pytorch](./Tools/Pytorch/)
       - [[Code] Neural Network Model](./Tools/Pytorch/Neural-Network-Model)
-      - [Code] [Embedding](./Tools/Pytorch/Embedding)
+      - [[Code]Embedding](./Tools/Pytorch/Embedding)
   - [Transformer](./Transformer)
     - [[Paper] Mathematical Foundations of Reinforcement Learning](./Transformer/Attention_Is_All_You_Need.pdf)
   - [README.md](./README.md)
