@@ -15,11 +15,11 @@ This repository is a knowledge base for learning Machine Learning and related to
   - [ROS](./ROS/)
     - [README.md](./ROS/README.md)
     - [[Code] Simple ROS Demo](./ROS/Simple-ROS-Demo/)
-  - [Tools](./Tools/)
-    - [README.md](./Tools/README.md) 
-    - [Pytorch](./Tools/Pytorch/)
-      - [[Code] Neural Network Model](./Tools/Pytorch/Neural-Network-Model)
-      - [[Code] Embedding](./Tools/Pytorch/Embedding)
+  - [Pytorch](./Pytorch/)
+    - [[Code] Neural Network Model](./Pytorch/Neural-Network-Model)
+    - [[Code] Embedding](./Pytorch/Embedding)
+    - [[Code] RNN](./Pytorch/RNN)
+    - [[Code] LSTM](./Pytorch/LSTM)
   - [Transformer](./Transformer)
     - [[Paper] Mathematical Foundations of Reinforcement Learning](./Transformer/Attention_Is_All_You_Need.pdf)
   - [README.md](./README.md)
@@ -29,6 +29,10 @@ This repository is a knowledge base for learning Machine Learning and related to
 ## 🙏 Acknowledgement
 
 Special thanks to **Professor Shiyu Zhao** for his insightful course on *“Mathematical Foundations of Reinforcement Learning”*, which laid a solid theoretical and practical foundation for my understanding of reinforcement learning. The comprehensive course materials — including the textbook, lecture slides, and sample code — are publicly available on his [GitHub repository](https://github.com/MathFoundationRL/Book-Mathematical-Foundation-of-Reinforcement-Learning.git). In addition, both English and Chinese versions of the lecture videos are accessible online, offering valuable learning resources for a broader audience.
+
+Special thanks to [Autolabor](http://www.autolabor.com.cn/) for providing the excellent online tutorial **ROS Tutorials** ([link](http://www.autolabor.com.cn/book/ROSTutorials/index.html)), which offers a clear and practical introduction to the Robot Operating System (ROS). The tutorial serves as a valuable learning resource for beginners and practitioners alike, covering essential concepts with hands-on examples.
+
+Gratitude is also extended to the authors of the **Practical PyTorch** [(GitHub repository)](https://github.com/spro/practical-pytorch.git), which offers a collection of well-structured and easy-to-follow PyTorch code examples. These implementations greatly facilitated my understanding of deep learning and PyTorch programming in practice.
 
 ## ✨ Contribution Guide
 
