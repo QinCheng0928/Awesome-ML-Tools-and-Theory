@@ -20,8 +20,6 @@ This repository is a knowledge base for learning Machine Learning and related to
     - [[Code] Embedding](./Pytorch/Embedding)
     - [[Code] RNN](./Pytorch/RNN)
     - [[Code] LSTM](./Pytorch/LSTM)
-  - [Transformer](./Transformer)
-    - [[Paper] Mathematical Foundations of Reinforcement Learning](./Transformer/Attention_Is_All_You_Need.pdf)
   - [README.md](./README.md)
 
 
