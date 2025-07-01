@@ -1,4 +1,4 @@
-# data.py
+import os
 import glob
 import unicodedata
 from typing import List, Dict
@@ -23,7 +23,7 @@ category_lines: Dict[str, List[str]] = {}
 all_categories: List[str] = []
 
 for filename in find_files(data_path):
-    category = filename.split('/')[-1].split('.')[0]
+    category = os.path.splitext(os.path.basename(filename))[0]
     all_categories.append(category)
     category_lines[category] = read_lines(filename)
 
@@ -37,4 +37,3 @@ def line_to_tensor(line: str) -> torch.Tensor:
     for li, letter in enumerate(line):
         tensor[li][0][letter_to_index(letter)] = 1
     return tensor
-
