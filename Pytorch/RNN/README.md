@@ -1,1 +1,0 @@
-Open the RNN folder in your code editor and run the relevant files.
