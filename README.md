@@ -24,7 +24,7 @@ This repository is a knowledge base for learning Machine Learning and related to
     - [Transformer](./LLM/Transformer/)
       - [Key Structure Image](./LLM/Transformer/img/)
       - [[Code] Transformer](./LLM/Transformer/Transformer/)
-      - [[Paper] Attention Is All You Need](./LLM/Transformer/Attention Is All You Need.pdf/)
+      - [[Paper] Attention Is All You Need](./LLM/Transformer/Attention-Is-All-You-Need.pdf/)
   - [README.md](./README.md)
 
 
