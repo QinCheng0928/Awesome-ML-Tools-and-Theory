@@ -1,10 +1,10 @@
-# [Awesome-ML-Tools-and-Theory](#Awesome-ML-Tools-and-Theory)
+# [Awesome-Autonomous-Driving-Tools-and-Theory](#Awesome-Autonomous-Driving-Tools-and-Theory)
 
 This repository is a knowledge base for learning Machine Learning and related tools. It contains theoretical books, practical code examples, and useful utilities, suitable for both study and research in Reinforcement Learning and Deep Learning.
 
 ## 🗂️ Directory Structure Overview
 
-- [Awesome-ML-Tools-and-Theory](#Awesome-ML-Tools-and-Theory)
+- [Awesome-Autonomous-Driving-Tools-and-Theory](#Awesome-Autonomous-Driving-Tools-and-Theory)
   - [Mathematical Foundations](./Mathematical-Foundations/)
     - [[Note] Information Theory](./Mathematical-Foundations/Information-Theory.pdf)
     - [[Note] Statistics](./Mathematical-Foundations/Statistics.pdf)
