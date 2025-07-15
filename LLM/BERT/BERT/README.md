@@ -1,3 +1,6 @@
+### File Structure
+
+```
 BERT/
 │
 ├── config.py          # Configuration file
@@ -7,3 +10,5 @@ BERT/
 ├── train.py           # Training script
 ├── evaluate.py        # Evaluation script
 └── utils.py           # Utility functions
+```
+
