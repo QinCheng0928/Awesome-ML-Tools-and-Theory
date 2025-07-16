@@ -1,0 +1,5 @@
+# Ignore all files in the data directory
+data/*
+
+# Ignore the model files
+clip_model.pth
