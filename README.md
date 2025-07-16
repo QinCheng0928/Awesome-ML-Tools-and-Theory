@@ -29,7 +29,9 @@ This repository is a knowledge base for learning Machine Learning and related to
       - [[Code] BERT](./LLM/BERT/BERT/)
       - [[Paper] Pre-training of Deep Bidirectional Transformers for Language Understanding](./LLM/BERT/Pre-training-of-Deep-Bidirectional-Transformers-for-Language-Understanding.pdf)
   - [MultiModal LLM](./MultiModal-LLM/)
-    - [ViT](./MultiModal-LLM/1-ViT/)
+    - [VIT](./MultiModal-LLM/1-VIT/)
+      - [[Code] VIT](./MultiModal-LLM/1-VIT/VIT/)
+      - [[Paper] Vision Transformer: An Image is Worth 16x16 Words Transformers for Image Recognition at Scale](./MultiModal-LLM/1-VIT/An-Image-is-Worth-16x16-Words-Transformers-for-Image-Recognition-at-Scale.pdf)
     - [CLIP](./MultiModal-LLM/2-CLIP/)
     - [MoCo](./MultiModal-LLM/3-MoCo/)
     - [ALBEF](./MultiModal-LLM/4-ALBEF/)
@@ -44,11 +46,14 @@ This repository is a knowledge base for learning Machine Learning and related to
 
 ## 🙏 Acknowledgement
 
-Special thanks to **Professor Shiyu Zhao** for his insightful course on *“Mathematical Foundations of Reinforcement Learning”*, which laid a solid theoretical and practical foundation for my understanding of reinforcement learning. The comprehensive course materials — including the textbook, lecture slides, and sample code — are publicly available on his [GitHub repository](https://github.com/MathFoundationRL/Book-Mathematical-Foundation-of-Reinforcement-Learning.git). In addition, both English and Chinese versions of the lecture videos are accessible online, offering valuable learning resources for a broader audience.
+Special thanks to:
 
-Special thanks to [Autolabor](http://www.autolabor.com.cn/) for providing the excellent online tutorial **ROS Tutorials** ([link](http://www.autolabor.com.cn/book/ROSTutorials/index.html)), which offers a clear and practical introduction to the Robot Operating System (ROS). The tutorial serves as a valuable learning resource for beginners and practitioners alike, covering essential concepts with hands-on examples.
+- **Prof. Shiyu Zhao** for his course *"Mathematical Foundations of Reinforcement Learning"* ([GitHub](https://github.com/MathFoundationRL/Book-Mathematical-Foundation-of-Reinforcement-Learning)).
+- **Autolabor** for their **ROS Tutorials** ([link](http://www.autolabor.com.cn/book/ROSTutorials/index.html)).
+- The authors of **Practical PyTorch** ([GitHub](https://github.com/spro/practical-pytorch)) for their clear PyTorch examples.
+- **Phil Wang (lucidrains)** for the **ViT-PyTorch** implementation ([GitHub](https://github.com/lucidrains/vit-pytorch)).
 
-Gratitude is also extended to the authors of the **Practical PyTorch** [(GitHub repository)](https://github.com/spro/practical-pytorch.git), which offers a collection of well-structured and easy-to-follow PyTorch code examples. These implementations greatly facilitated my understanding of deep learning and PyTorch programming in practice.
+Their resources greatly supported this work.
 
 ## ✨ Contribution Guide
 
