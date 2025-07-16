@@ -33,6 +33,8 @@ This repository is a knowledge base for learning Machine Learning and related to
       - [[Code] VIT](./MultiModal-LLM/1-VIT/VIT/)
       - [[Paper] Vision Transformer: An Image is Worth 16x16 Words Transformers for Image Recognition at Scale](./MultiModal-LLM/1-VIT/An-Image-is-Worth-16x16-Words-Transformers-for-Image-Recognition-at-Scale.pdf)
     - [CLIP](./MultiModal-LLM/2-CLIP/)
+      - [[Code] CLIP](./MultiModal-LLM/2-CLIP/CLIP/)
+      - [[Paper] CLIP: Learning Transferable Visual Models From Natural Language Supervision](./MultiModal-LLM/2-CLIP/Learning-Transferable-Visual-Models-From-Natural-Language-Supervision.pdf)
     - [MoCo](./MultiModal-LLM/3-MoCo/)
     - [ALBEF](./MultiModal-LLM/4-ALBEF/)
     - [BILP](./MultiModal-LLM/5-BILP/)
