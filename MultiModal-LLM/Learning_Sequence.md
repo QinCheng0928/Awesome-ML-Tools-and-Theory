@@ -1,6 +1,6 @@
 ### Recommended Reading Order
 
-1. ViT
+1. VIT
 2. CLIP
 3. MoCo
 4. ALBEF
